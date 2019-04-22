@@ -45,11 +45,5 @@ public class AppiumTest {
     public void tearDown() {
         driver.quit();
     }
-    
-    @Test
-    public void testOpensAlert() {
-
-    	System.out.println("testOpensAlert()");
-    }
 	
 }

@@ -5,7 +5,7 @@ import java.lang.Exception;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.AppiumDriver;
-
+import io.appium.java_client.android.nativekey.KeyEvent;
 
 import org.openqa.selenium.By;
 
@@ -14,6 +14,13 @@ import org.openqa.selenium.WebElement;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+
+/*
+ * Appium Selector Reference: http://appium.io/docs/en/commands/element/find-elements/
+ * Google UISelector Reference: https://developer.android.com/reference/android/support/test/uiautomator/UiSelector.html
+ * For Android, use androidDriver.findElementsByAndroidUIAutomator(); see references
+ */
 
 public class Page {
 	
@@ -33,6 +40,7 @@ public class Page {
 	protected static final Logger logger = LoggerFactory.getLogger(Page.class);
 	protected String className;
 	
+	protected static final String PACKAGE_NAME = "io.appium.android.apis:id/";
 	
 	
 	/**
@@ -48,37 +56,6 @@ public class Page {
 		// iOSDriver = (IOSDriver)driver;
 	}
 
-	/**
-	 * Return an element by locator. Valid locator strategies: xpath, id, class
-	 * name, accessibility id, -android uiautomator
-	 * 
-	 * @param locator
-	 * @return
-	 * @throws IntertekException 
-	 */
-	protected WebElement element(By locator) throws Exception  {
-		List<WebElement> list = elements(locator);
-		
-		if (list != null && list.size() > 0) {
-			if (list.size() > 1)
-				log("there are more elements found with same locator");
-			return list.get(0);
-		} else
-			throw new Exception("Could not find by locator "); // return
-																		// null;
-	}
-	
-	/**
-	 * Return a list of elements by locator Valid locator strategies: xpath, id,
-	 * class name, accessibility id, -android uiautomator
-	 * 
-	 * @param locator
-	 * @return
-	 */
-	protected List<WebElement> elements(By locator) {
-		return driver.findElements(locator);
-	}
-
 	public void log(String message) {
 
 		try {
@@ -86,4 +63,29 @@ public class Page {
 		} catch (Exception e) {
 		}
 	}
+	
+	
+	protected WebElement elementByText(String text) throws Exception {
+
+		List<WebElement> list = elementsByText(text);
+		if (list != null && list.size() > 0) {
+			if (list.size() > 1)
+				log("there are more elements found with same Text: " + text);
+			return list.get(0);
+		} else
+			throw new Exception("Could not find text: " + text); // return
+																			// null;
+	}
+	
+	protected List<WebElement> elementsByText(String text) {
+		return androidDriver.findElementsByAndroidUIAutomator("new UiSelector().text(\"" + text + "\")");
+	}
+	
+	/**
+	 * Press the system back button
+	 */
+	public void back() {
+	
+	}
+	
 }
