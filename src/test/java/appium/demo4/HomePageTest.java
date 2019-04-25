@@ -25,14 +25,13 @@ public class HomePageTest extends AppiumTest{
 
 	@Test
 	public void testHomePage() throws Exception{
-		
-		//homePage.log("starting testHomePage");
-		//click animation
+
 		AnimationPage animationPage = homePage.openAnimation();
-		homePage.back(); //.back needs to be implemented.
-		
-		
-		
+		homePage.back();
+		AccessibilityPage accessibilityPage = homePage.openAccessibility();
+		homePage.back();
+		AppPage appPage = homePage.openApp();
+		homePage.back();
 		
 	}
 	

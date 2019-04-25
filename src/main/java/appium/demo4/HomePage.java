@@ -12,7 +12,7 @@ import io.appium.java_client.MobileElement;
 
 public class HomePage extends Page{
 
-	public final String ACCESSABILITY = "Accessability";
+	public final String ACCESSIBILITY = "Accessibility";
 	public final String ANIMATION = "Animation";
 	public final String APP = "App";
 	public final String CONTENT = "Content";
@@ -30,6 +30,18 @@ public class HomePage extends Page{
 		
 	}
 	
+	public AccessibilityPage openAccessibility() throws Exception{
+		log("openAccessibility page");
+	try {
+		elementByText(ACCESSIBILITY).click();
+		
+	}catch(Exception e){
+		throw new Exception("Could not locate Accessability");
+	}
+	return new AccessibilityPage(driver);
+	
+	
+	}
 	
 	public AnimationPage openAnimation() throws Exception{
 		log("openAnimation page");
@@ -38,9 +50,20 @@ public class HomePage extends Page{
 		
 	}catch(Exception e){
 		throw new Exception("Could not locate Animation");
-	}
+		}
 	return new AnimationPage(driver);
-	
-	
 	}
+	
+	
+	public AppPage openApp() throws Exception{
+		log("openApp page");
+	try {
+		elementByText(APP).click();
+		
+	}catch(Exception e){
+		throw new Exception("Could not locate Animation");
+		}
+	return new AppPage(driver);
+	}
+	
 }

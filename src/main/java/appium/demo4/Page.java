@@ -5,7 +5,9 @@ import java.lang.Exception;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+
 
 import org.openqa.selenium.By;
 
@@ -85,7 +87,7 @@ public class Page {
 	 * Press the system back button
 	 */
 	public void back() {
-	
+	androidDriver.pressKey(new KeyEvent(AndroidKey.BACK));
 	}
 	
 }
