@@ -10,12 +10,10 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 
 
 import org.openqa.selenium.By;
-
 import org.openqa.selenium.WebElement;
 
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 /*
@@ -39,7 +37,8 @@ public class Page {
 	/*
 	 * declare a logger
 	 */
-	protected static final Logger logger = LoggerFactory.getLogger(Page.class);
+	//protected static final Logger logger = LoggerFactory.getLogger(Page.class);
+	private static final Logger logger = LogManager.getLogger(Page.class);
 	protected String className;
 	
 	protected static final String PACKAGE_NAME = "io.appium.android.apis:id/";
@@ -61,7 +60,7 @@ public class Page {
 	public void log(String message) {
 
 		try {
-			logger.info(className + " - " + message);
+			logger.error(className + " - " + message);
 		} catch (Exception e) {
 		}
 	}
@@ -87,6 +86,7 @@ public class Page {
 	 * Press the system back button
 	 */
 	public void back() {
+	log("back");
 	androidDriver.pressKey(new KeyEvent(AndroidKey.BACK));
 	}
 	
