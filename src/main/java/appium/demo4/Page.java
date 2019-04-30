@@ -65,7 +65,9 @@ public class Page {
 		}
 	}
 	
-	
+	/*
+	 * Find and return a single WebElement based on it's text.
+	 */
 	protected WebElement elementByText(String text) throws Exception {
 
 		List<WebElement> list = elementsByText(text);
@@ -77,9 +79,19 @@ public class Page {
 			throw new Exception("Could not find text: " + text); // return
 																			// null;
 	}
-	
+	/*
+	 * Find and return a list of WebElements based on the text.
+	 */
 	protected List<WebElement> elementsByText(String text) {
 		return androidDriver.findElementsByAndroidUIAutomator("new UiSelector().text(\"" + text + "\")");
+	}
+
+	
+	protected WebElement scrollIntoView(String view) {
+		return androidDriver.findElementByAndroidUIAutomator(
+				"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text(\""
+						+ view + "\").instance(0)) ");
+
 	}
 	
 	/**
@@ -89,5 +101,4 @@ public class Page {
 	log("back");
 	androidDriver.pressKey(new KeyEvent(AndroidKey.BACK));
 	}
-	
 }

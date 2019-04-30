@@ -25,13 +25,35 @@ public class HomePageTest extends AppiumTest{
 
 	@Test
 	public void testHomePage() throws Exception{
+		//click all home page buttons one by one.
 
-		AnimationPage animationPage = homePage.openAnimation();
+		
+		AccessibilityPage accessibilityPage = homePage.openAccessibilityPage();
 		homePage.back();
-		AccessibilityPage accessibilityPage = homePage.openAccessibility();
+		AnimationPage animationPage = homePage.openAnimationPage();
 		homePage.back();
-		AppPage appPage = homePage.openApp();
+		AppPage appPage = homePage.openAppPage();
 		homePage.back();
+		ContentPage contentPage = homePage.openContentPage();
+		homePage.back();
+		GraphicsPage graphicsPage = homePage.openGraphicsPage();
+		homePage.back();
+		MediaPage mediaPage = homePage.openMediaPage();
+		homePage.back();
+		NFCPage nfcPage = homePage.openNFCPage();
+		homePage.back();
+		OSPage osPage = homePage.openOSPage();
+		homePage.back();
+		PreferencePage preferencePage = homePage.openPreferencePage();
+		homePage.back();
+		TextPage textPage = homePage.openTextPage();
+		homePage.back();
+		
+		homePage.scrollIntoView("Views");
+		ViewsPage viewsPage = homePage.openViewsPage();
+		homePage.back();
+		
+		Assert.assertEquals("API Demos", homePage.getToolBar().getText());
 		
 	}
 	
