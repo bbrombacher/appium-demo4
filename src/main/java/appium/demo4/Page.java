@@ -2,12 +2,16 @@ package appium.demo4;
 
 import java.util.List;
 import java.lang.Exception;
+import java.time.Duration;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
-
+import io.appium.java_client.touch.LongPressOptions;
+import io.appium.java_client.touch.offset.ElementOption;
+import io.appium.java_client.touch.offset.PointOption;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -41,7 +45,7 @@ public class Page {
 	private static final Logger logger = LogManager.getLogger(Page.class);
 	protected String className;
 	
-	protected static final String PACKAGE_NAME = "io.appium.android.apis:id/";
+	protected static final String PACKAGE_NAME = "io.appium.android.apis";
 	
 	
 	/**
@@ -87,18 +91,47 @@ public class Page {
 	}
 
 	
-	protected WebElement scrollIntoView(String view) {
-		return androidDriver.findElementByAndroidUIAutomator(
-				"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text(\""
-						+ view + "\").instance(0)) ");
+	/*
+	 * Find a single element by using the Resrouce ID.
+	 * Likely should not be used since when using a Resrouce ID, there will usually be more than one.
+	 */
+	protected WebElement elementByResourceID(String ID) throws Exception {
 
+		List<WebElement> list = elementsByText(ID);
+		if (list != null && list.size() > 0) {
+			if (list.size() > 1)
+				log("there are more elements found with same ID: " + ID);
+			return list.get(0);
+		} else
+			throw new Exception("Could not find ID: " + ID); // return
 	}
 	
+	/*
+	 * Find a web element by using .resourceIdMatches(). When provide the ID, only provide the :id/[idname].
+	 * Replace [idname] with the id name.
+	 * Do not provide the whole package name.
+	 */
+	protected List<WebElement> elementsByResourceID(String ID) {
+		return androidDriver.findElementsByAndroidUIAutomator("new UiSelector().resourceIdMatches(\".*" + ID + "\")");
+		
+	}
+	
+
+	
+	
+	//Buttons and Touch Services
 	/**
 	 * Press the system back button
 	 */
 	public void back() {
 	log("back");
 	androidDriver.pressKey(new KeyEvent(AndroidKey.BACK));
+	}
+	
+	protected WebElement scrollIntoView(String view) {
+		return androidDriver.findElementByAndroidUIAutomator(
+				"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text(\""
+						+ view + "\").instance(0)) ");
+
 	}
 }

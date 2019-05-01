@@ -14,7 +14,6 @@ public class HomePageTest extends AppiumTest{
 	@Before
 	public void setUpTest() throws Exception {
 		super.setUp();
-		
 		homePage = new HomePage(driver);
 	}
 	
@@ -24,10 +23,9 @@ public class HomePageTest extends AppiumTest{
 	}
 
 	@Test
-	public void testHomePage() throws Exception{
+	public void testHomePage() throws Exception {
 		//click all home page buttons one by one.
 
-		
 		AccessibilityPage accessibilityPage = homePage.openAccessibilityPage();
 		homePage.back();
 		AnimationPage animationPage = homePage.openAnimationPage();
@@ -48,7 +46,6 @@ public class HomePageTest extends AppiumTest{
 		homePage.back();
 		TextPage textPage = homePage.openTextPage();
 		homePage.back();
-		
 		homePage.scrollIntoView("Views");
 		ViewsPage viewsPage = homePage.openViewsPage();
 		homePage.back();
@@ -56,9 +53,5 @@ public class HomePageTest extends AppiumTest{
 		Assert.assertEquals("API Demos", homePage.getToolBar().getText());
 		
 	}
-	
-
-	
-	
 	
 }

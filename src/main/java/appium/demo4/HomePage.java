@@ -56,10 +56,9 @@ public class HomePage extends Page{
 		throw new Exception("Could not locate Accessability");
 	}
 	return new AccessibilityPage(driver);
-	
-	
 	}
 	
+	// Open Animation Page
 	public AnimationPage openAnimationPage() throws Exception{
 		log("openAnimation page");
 	try {
@@ -71,7 +70,7 @@ public class HomePage extends Page{
 	return new AnimationPage(driver);
 	}
 	
-	
+	// Open App Page
 	public AppPage openAppPage() throws Exception{
 		log("openApp page");
 	try {
@@ -83,7 +82,7 @@ public class HomePage extends Page{
 	return new AppPage(driver);
 	}
 
-	
+	// Open Content Page
 	public ContentPage openContentPage() throws Exception{
 		log("openContent page");
 	try {

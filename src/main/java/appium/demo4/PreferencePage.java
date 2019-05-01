@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumDriver;
 
 public class PreferencePage extends Page{
 
+	public final String PREFERENCESFROMXML = "1. Preferences from XML";
 	
 	public PreferencePage(AppiumDriver driver) throws Exception {
 		super(driver);
@@ -12,6 +13,15 @@ public class PreferencePage extends Page{
 		
 	}
 	
-	
+	public PreferencesFromXMLPage openPreferencesFromXMLPage() throws Exception{
+		log("openPreferencesFromXML Page");
+		try {
+			elementByText(PREFERENCESFROMXML).click();
+
+		}catch(Exception e) {
+			throw new Exception("Could not locate PreferencesFromXML Page");
+		}
+		return new PreferencesFromXMLPage(driver);
+	}
 	
 }
