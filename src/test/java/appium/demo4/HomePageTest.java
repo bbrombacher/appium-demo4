@@ -9,8 +9,7 @@ import org.junit.Test;
 public class HomePageTest extends AppiumTest{
 	
 	protected HomePage homePage;
-	
-	
+/*
 	@Before
 	public void setUpTest() throws Exception {
 		super.setUp();
@@ -21,11 +20,11 @@ public class HomePageTest extends AppiumTest{
 	public void tearDownTest() throws Exception {
 		super.tearDown();
 	}
-
+*/
 	@Test
 	public void testHomePage() throws Exception {
 		//click all home page buttons one by one.
-
+		homePage = new HomePage(driver);
 		AccessibilityPage accessibilityPage = homePage.openAccessibilityPage();
 		homePage.back();
 		AnimationPage animationPage = homePage.openAnimationPage();
@@ -46,11 +45,11 @@ public class HomePageTest extends AppiumTest{
 		homePage.back();
 		TextPage textPage = homePage.openTextPage();
 		homePage.back();
-		homePage.scrollIntoView("Views");
+		homePage.scrollIntoView(homePage.VIEWS);
 		ViewsPage viewsPage = homePage.openViewsPage();
 		homePage.back();
 		
-		Assert.assertEquals("API Demos", homePage.getToolBar().getText());
+		Assert.assertEquals(homePage.APIDEMOS, homePage.getToolBar().getText());
 		
 	}
 	

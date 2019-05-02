@@ -1,5 +1,6 @@
 package appium.demo4;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -24,7 +25,13 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class AppiumTest {
 
 	public AppiumDriver driver;
-	
+	/*
+	@Before
+	public void setUpTest() throws Exception {
+		setUp();
+		
+	}
+	*/
 	@Before
     public void setUp() throws IOException {
             
@@ -45,5 +52,10 @@ public class AppiumTest {
     public void tearDown() {
         driver.quit();
     }
+    
+	@After
+	public void tearDownTest() throws Exception {
+		tearDown();
+	}
 	
 }

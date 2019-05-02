@@ -11,7 +11,7 @@ public class PreferenceTest extends AppiumTest {
 	protected HomePage homePage;
 	
 	public final String TIGER = "tiger";
-	
+	/*
 	@Before
 	public void setUpTest() throws Exception {
 		super.setUp();
@@ -22,10 +22,10 @@ public class PreferenceTest extends AppiumTest {
 	public void tearDownTest() throws Exception {
 		super.tearDown();
 	}
-	
+	*/
 	@Test
 	public void testPreferencesTextField() throws Exception {
-		
+		homePage = new HomePage(driver);
 		PreferencePage preferencePage = homePage.openPreferencePage();
 		PreferencesFromXMLPage preferencesFromXMLPage = preferencePage.openPreferencesFromXMLPage();
 		
