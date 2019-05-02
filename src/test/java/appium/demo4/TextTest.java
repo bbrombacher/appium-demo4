@@ -19,7 +19,7 @@ public class TextTest extends AppiumTest {
 		logTextBoxPage.clickAddButton();
 		
 		String text = logTextBoxPage.getLogTextBox().getText();
-		logTextBoxPage.log("Actual Text: " + text + "Expected Text: " + logTextBoxPage.EXPECTEDLOGTEXT);
+		logTextBoxPage.log("Actual Text: " + text + " Expected Text: " + logTextBoxPage.EXPECTEDLOGTEXT);
 		
 		Assert.assertEquals(text, logTextBoxPage.EXPECTEDLOGTEXT);
 		
