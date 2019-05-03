@@ -19,6 +19,7 @@ public class ViewsTest extends AppiumTest {
 		 * After some research, it seems that this popup does not appear in view XML.
 		 * It definitely does not appear when using driver.getPageSource().toString().
 		 * Only the items from the page below the popup appear in the output. 
+		 * https://issuetracker.google.com/issues/37017411
 		 */
 		homePage = new HomePage(driver);
 		ViewsPage viewsPage = homePage.openViewsPage();
