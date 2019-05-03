@@ -20,6 +20,8 @@ public class ViewsTest extends AppiumTest {
 		 * It definitely does not appear when using driver.getPageSource().toString().
 		 * Only the items from the page below the popup appear in the output. 
 		 * https://issuetracker.google.com/issues/37017411
+		 * 
+		 * Possible solution? http://appium.io/docs/en/writing-running-appium/android/espresso-datamatcher-selector/
 		 */
 		homePage = new HomePage(driver);
 		ViewsPage viewsPage = homePage.openViewsPage();
