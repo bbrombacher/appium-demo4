@@ -146,7 +146,7 @@ public class HomePage extends Page{
 	public PreferencePage openPreferencePage() throws Exception{
 		log("openPreference Page");
 		try {
-			elementByText(PREFERENCE).click();
+			scrollIntoView(PREFERENCE).click();
 
 		}catch(Exception e) {
 			throw new Exception("Could not locate Preference Page");
@@ -158,7 +158,7 @@ public class HomePage extends Page{
 	public TextPage openTextPage() throws Exception{
 		log("openText Page");
 		try {
-			elementByText(TEXT).click();
+			scrollIntoView(TEXT).click();
 
 		}catch(Exception e) {
 			throw new Exception("Could not locate Text Page");
@@ -169,7 +169,7 @@ public class HomePage extends Page{
 	public ViewsPage openViewsPage() throws Exception{
 		log("openViews Page");
 		try {
-			elementByText(VIEWS).click();
+			scrollIntoView(VIEWS).click();
 
 		}catch(Exception e) {
 			throw new Exception("Could not locate Views Page");

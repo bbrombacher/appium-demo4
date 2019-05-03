@@ -20,7 +20,8 @@ public class PreferencesFromXMLPage extends Page{
 	
 	//Send Keys Methods
 	public void sendKeysToTextField(String text) throws Exception {
-		getTextField().sendKeys(text);
+		//getTextField().sendKeys(text);
+		sendKeysToField(text, getTextField());
 		log(text + " sent to text field");
 	}
 	

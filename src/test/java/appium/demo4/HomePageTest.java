@@ -45,7 +45,7 @@ public class HomePageTest extends AppiumTest{
 		homePage.back();
 		TextPage textPage = homePage.openTextPage();
 		homePage.back();
-		homePage.scrollIntoView(homePage.VIEWS);
+		
 		ViewsPage viewsPage = homePage.openViewsPage();
 		homePage.back();
 		

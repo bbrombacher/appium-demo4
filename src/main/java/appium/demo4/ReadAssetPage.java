@@ -19,7 +19,7 @@ public class ReadAssetPage extends Page {
 	
 	//Get Methods
 	public WebElement getAssetTextBox() throws Exception {
-		log("getAssetText");
+		//log("getAssetText");
 		try {
 			List<WebElement> logText = elementsByResourceID(ASSETTEXTBOX);
 			return logText.get(0);

@@ -69,11 +69,13 @@ public class Page {
 		}
 	}
 	
+	
+	// Find Element methods
 	/*
 	 * Find and return a single WebElement based on it's text.
 	 */
 	protected WebElement elementByText(String text) throws Exception {
-
+		
 		List<WebElement> list = elementsByText(text);
 		if (list != null && list.size() > 0) {
 			if (list.size() > 1)
@@ -116,6 +118,14 @@ public class Page {
 		
 	}
 	
+	/*
+	 * Scrolls to find text on the screen, then returns the corresponding Web Element.
+	 */
+	protected WebElement scrollIntoView(String view) {
+		return androidDriver.findElementByAndroidUIAutomator(
+				"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text(\""
+						+ view + "\").instance(0)) ");
+	}
 
 	
 	
@@ -128,10 +138,18 @@ public class Page {
 	androidDriver.pressKey(new KeyEvent(AndroidKey.BACK));
 	}
 	
-	protected WebElement scrollIntoView(String view) {
-		return androidDriver.findElementByAndroidUIAutomator(
-				"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text(\""
-						+ view + "\").instance(0)) ");
-
+	
+	public void sendKeysToField(String text, WebElement field) {
+		log("send keys " + text + " to field ");
+		field.sendKeys(text);
+		
 	}
+	
+
+	public void sendKeysToAutoCompleteField(String text, WebElement field) {
+		log("send keys " + text + " to auto complete field ");
+		field.click();
+		field.sendKeys(text);
+	}
+
 }
