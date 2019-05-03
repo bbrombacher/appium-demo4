@@ -4,14 +4,15 @@ import java.util.List;
 import java.lang.Exception;
 import java.time.Duration;
 
+import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.remote.MobilePlatform;
+
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.TouchAction;
+import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
-import io.appium.java_client.touch.LongPressOptions;
-import io.appium.java_client.touch.offset.ElementOption;
-import io.appium.java_client.touch.offset.PointOption;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -126,8 +127,11 @@ public class Page {
 				"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().text(\""
 						+ view + "\").instance(0)) ");
 	}
+	
+	// Page Source
 
 	protected String getPageSource() {
+		log("get page source");
 		return driver.getPageSource().toString();
 	}
 	
