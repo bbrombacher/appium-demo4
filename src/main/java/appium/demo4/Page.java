@@ -127,6 +127,9 @@ public class Page {
 						+ view + "\").instance(0)) ");
 	}
 
+	protected String getPageSource() {
+		return driver.getPageSource().toString();
+	}
 	
 	
 	//Buttons and Touch Services
