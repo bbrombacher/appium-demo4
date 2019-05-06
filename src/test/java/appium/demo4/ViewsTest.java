@@ -3,6 +3,9 @@ package appium.demo4;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.WebElement;
+
+
 import org.junit.Assert;
 
 public class ViewsTest extends AppiumTest {
@@ -10,7 +13,8 @@ public class ViewsTest extends AppiumTest {
 	protected HomePage homePage;
 	public final String SENDCOUNTRYTEXT = "Unit";
 	
-	@Test
+	
+	//@Test
 	public void testAutoCompleteList() throws Exception {
 		
 		/*
@@ -37,11 +41,14 @@ public class ViewsTest extends AppiumTest {
 		
 	}
 	
-	//@Test
+	@Test
 	public void testSimpleAdapter() throws Exception {
 		homePage = new HomePage(driver);
 		ViewsPage viewsPage = homePage.openViewsPage();
 		ExpandableListsPage expandableListsPage = viewsPage.openExpandableListsPage();
+		SimpleAdapterPage simpleAdapterPage = expandableListsPage.openSimpleAdapterPage();
+
+		Assert.assertTrue(simpleAdapterPage.verifyTopLevelList());
 		
 	}
 }
